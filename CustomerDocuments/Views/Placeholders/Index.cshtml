@@ -1,0 +1,35 @@
+﻿@model IEnumerable<CustomerDocuments.Models.Placeholder>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/_Layout.cshtml";
+}
+
+<h1>Placeholders</h1>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>UserId</th>
+            <th>Name</th>
+            <th>Value</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.UserId</td>
+                <td>@item.Name</td>
+                <td>@item.Value</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.PlaceholderId">Edit</a>
+                    <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.PlaceholderId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-success" asp-action="Create">Create New</a>

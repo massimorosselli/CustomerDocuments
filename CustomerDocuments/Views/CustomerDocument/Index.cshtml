@@ -1,0 +1,35 @@
+﻿@model CustomerDocument
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/_Layout.cshtml";
+}
+
+<h1>Customer Document</h1>
+
+<body>
+    <div class="container">
+        <h3>Select Document and Customer</h3>
+        <form asp-action="CreateDocument" method="post">
+            <div class="form-group">
+                <label for="document">Document</label>
+                <select id="document" name="documentFileName" class="form-control">
+                    @foreach (var doc in Model.Documents)
+                    {
+                        <option value="@doc.FileName">@doc.FileName</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="placeholder">Customer</label>
+                <select id="placeholder" name="placeholderUserId" class="form-control">
+                    @foreach (var ph in Model.Placeholders)
+                    {
+                        <option value="@ph.UserId">@ph.UserId</option>
+                    }
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Crea documento</button>
+        </form>
+    </div>
+</body>
